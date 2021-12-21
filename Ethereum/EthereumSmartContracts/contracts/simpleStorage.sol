@@ -1,14 +1,18 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.11;
+pragma solidity ^0.8.0;
 
-contract SimpleStorage {
-    uint storedData;
+contract Counter{
+// uint means unsigned integer
+    uint count;
 
-    function set(uint x) public {
-        storedData = x;
+    constructor() {
+            count=0;
+    }
+    function getCount()public view returns(uint){
+        return count;
     }
 
-    function get() public view returns (uint) {
-        return storedData;
+    function incrementCount()public {
+        count=count+1;
     }
 }
