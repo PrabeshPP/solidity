@@ -7,11 +7,14 @@ contract MyContract{
     string[] public stringArray=["apple","banana","carrot"];
     string[] public myArray;
     string[] public values;
-
+    uint [][] public array2D=[[1,2,3],[4,5,6]];
     function addValue(string memory _value)public{
-        values.push(_value);
+        values.push(_value); // it will add the value in the vaues array
     }
 
+    function valueCount() public view returns(uint){
+        return values.length;
+    }
 
 
 
