@@ -11,7 +11,7 @@ contract Coin{
     }
     event Sent(address from,address to,uint amount); // it emits the state when the sent event is called 
     
-    // this function would allow us to create coin and only the owner of the contract can create the coin
+    // this function would allow us to create coin and only the owner of the contract can send the coin to a receiver address
     function mint(address receiver,uint amount)public{
         require(msg.sender==minter);
         balances[receiver]+=amount;
@@ -22,7 +22,7 @@ contract Coin{
     //it wil return error 
     error InsufficientBalance(uint requested,uint available);
 
-    //this function would allow us to send the created coin to the receiver address
+    //this function would allow anyone to send the created coin to the receiver address,only if the user has a coin
     function send(address receiver,uint amount)public{
         if(amount>balances[msg.sender])
         revert InsufficientBalance({
