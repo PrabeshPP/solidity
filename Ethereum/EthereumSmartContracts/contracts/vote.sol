@@ -18,4 +18,21 @@ struct Proposal{
     uint voteCount;
 }
 
+mapping(address=>Voter) public voters;
+
+Proposal[] public proposal;
+
+constructor(bytes32 proposalNames){
+
+chairperson=msg.sender;
+voters[chairperson].weight=1;
+for(uint i=0;i<proposalNames.length;i++){
+    proposal.push(Proposal({
+        name:proposalNames,
+        voteCount:0
+    }));
+}
+}
+
+
 }
